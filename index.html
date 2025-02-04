@@ -7,10 +7,45 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const questions = [
-                "What is the next number in the sequence: 2, 6, 12, 20, ?",
-                "If a plane crashes on the border of two countries, where do they bury the survivors?",
-                "A farmer has 17 sheep and all but 9 run away. How many sheep does he have left?",
-                // Add 297 more questions here...
+                { question: "What is the next number in the sequence: 2, 6, 12, 20, ?", answer: "30" },
+                { question: "If a plane crashes on the border of two countries, where do they bury the survivors?", answer: "Survivors are not buried." },
+                { question: "A farmer has 17 sheep and all but 9 run away. How many sheep does he have left?", answer: "9" },
+                { question: "What comes next in the pattern: A, C, F, J, O, ?", answer: "U" },
+                { question: "A clock shows 3:15. What is the angle between the hour and the minute hand?", answer: "7.5 degrees" },
+                { question: "You see a boat filled with people. It hasn’t sunk, but when you look again, you don’t see a single person on board. Why?", answer: "All the people were married." },
+                { question: "What five-letter word becomes shorter when you add two letters to it?", answer: "Short" },
+                { question: "What has keys but can’t open locks?", answer: "A piano" },
+                { question: "A bat and a ball cost $1.10 together. The bat costs $1 more than the ball. How much does the ball cost?", answer: "$0.05" },
+                { question: "How many squares are there on a chessboard?", answer: "204" },
+                { question: "What is the next number in the sequence: 1, 1, 2, 3, 5, 8, ?", answer: "13" },
+                { question: "A father and son get into a car accident. The father dies, and the son is rushed to the hospital. The doctor looks at the boy and says, ‘I can’t operate on him. He’s my son.’ How is this possible?", answer: "The doctor is his mother." },
+                { question: "Which weighs more: a pound of feathers or a pound of bricks?", answer: "They weigh the same." },
+                { question: "I am taken from a mine and shut inside a wooden case, from which I am never released, and yet I am used by almost every person. What am I?", answer: "Pencil lead." },
+                { question: "A woman has 7 daughters, each daughter has a brother. How many children does she have?", answer: "8 (all the daughters share the same one brother)." },
+                { question: "The more you take, the more you leave behind. What am I?", answer: "Footsteps." },
+                { question: "What begins and ends with an ‘E’ but only has one letter?", answer: "An envelope." },
+                { question: "What is always in front of you but can’t be seen?", answer: "The future." },
+                { question: "A man is pushing his car to a hotel and suddenly realizes he’s bankrupt. Why?", answer: "He’s playing Monopoly." },
+                { question: "What has to be broken before you can use it?", answer: "An egg." },
+                { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle." },
+                { question: "What month of the year has 28 days?", answer: "All of them." },
+                { question: "What is full of holes but still holds water?", answer: "A sponge." },
+                { question: "What can you catch but not throw?", answer: "A cold." },
+                { question: "What gets wet while drying?", answer: "A towel." },
+                { question: "What goes up but never comes down?", answer: "Your age." },
+                { question: "The more of this there is, the less you see. What is it?", answer: "Darkness." },
+                { question: "What has one eye but can’t see?", answer: "A needle." },
+                { question: "What has hands but can’t clap?", answer: "A clock." },
+                { question: "What has a heart that doesn’t beat?", answer: "An artichoke." },
+                { question: "What is light as a feather, yet the strongest man can’t hold it for long?", answer: "His breath." },
+                { question: "What has many teeth but can’t bite?", answer: "A comb." },
+                { question: "What has legs but doesn’t walk?", answer: "A table." },
+                { question: "What can travel around the world while staying in the same spot?", answer: "A stamp." },
+                { question: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?", answer: "An echo." },
+                { question: "The more you remove from me, the bigger I get. What am I?", answer: "A hole." },
+                { question: "What runs but never walks, has a bed but never sleeps?", answer: "A river." },
+                { question: "What has a face and two hands but no arms or legs?", answer: "A clock." },
+                { question: "What can you hold in your left hand but not in your right?", answer: "Your right hand." }
             ];
 
             function getStoredQuestions() {
@@ -29,59 +64,36 @@
                     seenQuestions = [];
                 }
                 
-                let availableQuestions = questions.filter(q => !seenQuestions.includes(q));
+                let availableQuestions = questions.filter(q => !seenQuestions.includes(q.question));
                 let randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
-                seenQuestions.push(randomQuestion);
+                seenQuestions.push(randomQuestion.question);
                 setStoredQuestions(seenQuestions);
                 return randomQuestion;
             }
 
-            document.getElementById("question").textContent = getRandomQuestion();
-            document.getElementById("newQuestion").addEventListener("click", function () {
-                document.getElementById("question").textContent = getRandomQuestion();
+            function displayNewQuestion() {
+                let q = getRandomQuestion();
+                document.getElementById("question").textContent = q.question;
+                document.getElementById("answer").textContent = "";
+                document.getElementById("answer").dataset.answer = q.answer;
+            }
+
+            document.getElementById("newQuestion").addEventListener("click", displayNewQuestion);
+            document.getElementById("revealAnswer").addEventListener("click", function () {
+                document.getElementById("answer").textContent = document.getElementById("answer").dataset.answer;
             });
+
+            displayNewQuestion();
         });
     </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        #container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div id="container">
         <h1>IQ Booster</h1>
         <p id="question">Loading question...</p>
         <button id="newQuestion">New Question</button>
-    </div>
-    
-    <!-- Google AdSense Placeholder -->
-    <div style="margin-top: 20px;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="YOUR-ADSENSE-CLIENT-ID"
-             data-ad-slot="YOUR-AD-SLOT-ID"
-             data-ad-format="auto"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <button id="revealAnswer">Reveal Answer</button>
+        <p id="answer"></p>
     </div>
 </body>
 </html>
