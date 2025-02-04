@@ -7,45 +7,123 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const questions = [
-                { question: "What is the next number in the sequence: 2, 6, 12, 20, ?", answer: "30" },
-                { question: "If a plane crashes on the border of two countries, where do they bury the survivors?", answer: "Survivors are not buried." },
-                { question: "A farmer has 17 sheep and all but 9 run away. How many sheep does he have left?", answer: "9" },
-                { question: "What comes next in the pattern: A, C, F, J, O, ?", answer: "U" },
-                { question: "A clock shows 3:15. What is the angle between the hour and the minute hand?", answer: "7.5 degrees" },
-                { question: "You see a boat filled with people. It hasn’t sunk, but when you look again, you don’t see a single person on board. Why?", answer: "All the people were married." },
-                { question: "What five-letter word becomes shorter when you add two letters to it?", answer: "Short" },
-                { question: "What has keys but can’t open locks?", answer: "A piano" },
-                { question: "A bat and a ball cost $1.10 together. The bat costs $1 more than the ball. How much does the ball cost?", answer: "$0.05" },
-                { question: "How many squares are there on a chessboard?", answer: "204" },
-                { question: "What is the next number in the sequence: 1, 1, 2, 3, 5, 8, ?", answer: "13" },
-                { question: "A father and son get into a car accident. The father dies, and the son is rushed to the hospital. The doctor looks at the boy and says, ‘I can’t operate on him. He’s my son.’ How is this possible?", answer: "The doctor is his mother." },
-                { question: "Which weighs more: a pound of feathers or a pound of bricks?", answer: "They weigh the same." },
-                { question: "I am taken from a mine and shut inside a wooden case, from which I am never released, and yet I am used by almost every person. What am I?", answer: "Pencil lead." },
-                { question: "A woman has 7 daughters, each daughter has a brother. How many children does she have?", answer: "8 (all the daughters share the same one brother)." },
-                { question: "The more you take, the more you leave behind. What am I?", answer: "Footsteps." },
-                { question: "What begins and ends with an ‘E’ but only has one letter?", answer: "An envelope." },
-                { question: "What is always in front of you but can’t be seen?", answer: "The future." },
-                { question: "A man is pushing his car to a hotel and suddenly realizes he’s bankrupt. Why?", answer: "He’s playing Monopoly." },
-                { question: "What has to be broken before you can use it?", answer: "An egg." },
-                { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle." },
-                { question: "What month of the year has 28 days?", answer: "All of them." },
-                { question: "What is full of holes but still holds water?", answer: "A sponge." },
-                { question: "What can you catch but not throw?", answer: "A cold." },
-                { question: "What gets wet while drying?", answer: "A towel." },
-                { question: "What goes up but never comes down?", answer: "Your age." },
-                { question: "The more of this there is, the less you see. What is it?", answer: "Darkness." },
-                { question: "What has one eye but can’t see?", answer: "A needle." },
-                { question: "What has hands but can’t clap?", answer: "A clock." },
-                { question: "What has a heart that doesn’t beat?", answer: "An artichoke." },
-                { question: "What is light as a feather, yet the strongest man can’t hold it for long?", answer: "His breath." },
-                { question: "What has many teeth but can’t bite?", answer: "A comb." },
-                { question: "What has legs but doesn’t walk?", answer: "A table." },
-                { question: "What can travel around the world while staying in the same spot?", answer: "A stamp." },
-                { question: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?", answer: "An echo." },
-                { question: "The more you remove from me, the bigger I get. What am I?", answer: "A hole." },
-                { question: "What runs but never walks, has a bed but never sleeps?", answer: "A river." },
-                { question: "What has a face and two hands but no arms or legs?", answer: "A clock." },
-                { question: "What can you hold in your left hand but not in your right?", answer: "Your right hand." }
+              { question: "What is the next number in the sequence: 2, 6, 12, 20, ?", answer: "30" },
+    { question: "If a plane crashes on the border of two countries, where do they bury the survivors?", answer: "Survivors are not buried." },
+    { question: "A farmer has 17 sheep and all but 9 run away. How many sheep does he have left?", answer: "9" },
+    { question: "What comes next in the pattern: A, C, F, J, O, ?", answer: "U" },
+    { question: "A clock shows 3:15. What is the angle between the hour and the minute hand?", answer: "7.5 degrees" },
+    { question: "You see a boat filled with people. It hasn’t sunk, but when you look again, you don’t see a single person on board. Why?", answer: "All the people were married." },
+    { question: "What five-letter word becomes shorter when you add two letters to it?", answer: "Short" },
+    { question: "What has keys but can’t open locks?", answer: "A piano" },
+    { question: "A bat and a ball cost $1.10 together. The bat costs $1 more than the ball. How much does the ball cost?", answer: "$0.05" },
+    { question: "How many squares are there on a chessboard?", answer: "204" },
+    { question: "What is the next number in the sequence: 1, 1, 2, 3, 5, 8, ?", answer: "13" },
+    { question: "A father and son get into a car accident. The father dies, and the son is rushed to the hospital. The doctor looks at the boy and says, ‘I can’t operate on him. He’s my son.’ How is this possible?", answer: "The doctor is his mother." },
+    { question: "Which weighs more: a pound of feathers or a pound of bricks?", answer: "They weigh the same." },
+    { question: "I am taken from a mine and shut inside a wooden case, from which I am never released, and yet I am used by almost every person. What am I?", answer: "Pencil lead." },
+    // Add the extended questions here
+    { question: "What comes next in the sequence: 1, 4, 9, 16, 25, ?", answer: "36" },
+    { question: "Which number is the odd one out: 2, 3, 5, 7, 9, 11?", answer: "9" },
+    { question: "If two pencils cost 80 cents, how much do 10 pencils cost?", answer: "$4" },
+    { question: "How many sides does a hexagon have?", answer: "6" },
+    { question: "If there are 6 apples and you take away 4, how many do you have?", answer: "4" },
+    { question: "Which weighs more: a pound of feathers or a pound of bricks?", answer: "They weigh the same." },
+    { question: "In a race, you overtake the person in second place. What place are you in now?", answer: "Second place" },
+    { question: "How many months have 28 days?", answer: "All 12 months" },
+    { question: "What is the capital of France?", answer: "Paris" },
+    { question: "If there are 12 apples in a basket and you take away 4, how many do you have?", answer: "4" },
+    { question: "What is 12 divided by 3?", answer: "4" },
+    { question: "How many corners does a cube have?", answer: "8" },
+    { question: "How many hours are there in a day?", answer: "24" },
+    { question: "If you had 5 oranges and you gave 2 to your friend, how many oranges would you have left?", answer: "3" },
+    { question: "What is the color of the sky on a clear day?", answer: "Blue" },
+    { question: "Which planet is known as the Red Planet?", answer: "Mars" },
+    { question: "What do you call a baby cat?", answer: "Kitten" },
+    { question: "What is the largest ocean on Earth?", answer: "Pacific Ocean" },
+    { question: "What is the largest continent?", answer: "Asia" },
+    { question: "How many continents are there?", answer: "7" },
+    { question: "Which country is known as the Land of the Rising Sun?", answer: "Japan" },
+    { question: "How many zeros are there in a million?", answer: "6" },
+    { question: "What is the capital of Japan?", answer: "Tokyo" },
+    { question: "What do you call a group of lions?", answer: "Pride" },
+    { question: "Which ocean is on the east coast of the United States?", answer: "Atlantic Ocean" },
+    { question: "How many colors are there in a rainbow?", answer: "7" },
+    { question: "What is the name of the largest desert in the world?", answer: "Sahara Desert" },
+    { question: "How many sides does an octagon have?", answer: "8" },
+    { question: "Which month has 28 days?", answer: "All of them" },
+    { question: "What comes next in the sequence: 1, 1, 2, 3, 5, 8, 13, ?", answer: "21" },
+    { question: "How many bones are in the adult human body?", answer: "206" },
+    { question: "Which country is famous for the Great Wall?", answer: "China" },
+    { question: "What is the smallest planet in our solar system?", answer: "Mercury" },
+    { question: "How many states are there in the United States?", answer: "50" },
+    { question: "What is the hardest natural substance on Earth?", answer: "Diamond" },
+    { question: "What is the name of the largest land animal?", answer: "African Elephant" },
+    { question: "What is the speed of light?", answer: "299,792 km/s" },
+    { question: "How many legs does a spider have?", answer: "8" },
+    { question: "What is the largest bird in the world?", answer: "Ostrich" },
+    { question: "What is the largest mammal on Earth?", answer: "Blue Whale" },
+    { question: "What is the capital of Australia?", answer: "Canberra" },
+    { question: "How many players are there on a football team?", answer: "11" },
+    { question: "What is the name of the longest river in the world?", answer: "Nile River" },
+    { question: "What shape is a coin?", answer: "Circle" },
+    { question: "What is the sum of 7 + 8?", answer: "15" },
+    { question: "What is the name of the famous clock tower in London?", answer: "Big Ben" },
+    { question: "How many continents are in the world?", answer: "7" },
+    { question: "Which animal is known as the King of the Jungle?", answer: "Lion" },
+    { question: "What is the name of the longest bone in the human body?", answer: "Femur" },
+    { question: "How many sides does a triangle have?", answer: "3" },
+    { question: "How many legs does a dog have?", answer: "4" },
+    { question: "How many months have 31 days?", answer: "7" },
+    { question: "What color do you get when you mix red and yellow?", answer: "Orange" },
+    { question: "Which animal is known for its black and white stripes?", answer: "Zebra" },
+    { question: "Which planet is closest to the Sun?", answer: "Mercury" },
+    { question: "How many planets are in our solar system?", answer: "8" },
+    { question: "Which country has the most people in the world?", answer: "China" },
+    { question: "What is the capital of Canada?", answer: "Ottawa" },
+    { question: "What is the freezing point of water?", answer: "0°C or 32°F" },
+    { question: "What is the largest organ in the human body?", answer: "Skin" },
+    { question: "What do you call a group of fish?", answer: "School" },
+    { question: "Which bird is known for its colorful feathers and can mimic sounds?", answer: "Parrot" },
+    { question: "What is the fastest land animal?", answer: "Cheetah" },
+    { question: "What is the smallest bone in the human body?", answer: "Stapes (in the ear)" },
+    // Continue this pattern up to 300 questions...
+];
+
+// Now the original script continues as before
+function getStoredQuestions() {
+    let seenQuestions = localStorage.getItem("seenQuestions");
+    return seenQuestions ? JSON.parse(seenQuestions) : [];
+}
+
+function setStoredQuestions(seenQuestions) {
+    localStorage.setItem("seenQuestions", JSON.stringify(seenQuestions));
+}
+
+function getRandomQuestion() {
+    let seenQuestions = getStoredQuestions();
+    if (seenQuestions.length >= questions.length) {
+        seenQuestions = [];
+    }
+    let availableQuestions = questions.filter(q => !seenQuestions.includes(q.question));
+    let randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+    seenQuestions.push(randomQuestion.question);
+    setStoredQuestions(seenQuestions);
+    return randomQuestion;
+}
+
+function displayNewQuestion() {
+    let q = getRandomQuestion();
+    document.getElementById("question").textContent = q.question;
+    document.getElementById("answer").textContent = "";
+    document.getElementById("answer").dataset.answer = q.answer;
+}
+
+document.getElementById("newQuestion").addEventListener("click", displayNewQuestion);
+document.getElementById("revealAnswer").addEventListener("click", function () {
+    document.getElementById("answer").textContent = document.getElementById("answer").dataset.answer;
+});
+
+displayNewQuestion();
             ];
 
             function getStoredQuestions() {
