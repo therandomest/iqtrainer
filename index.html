@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Booster</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = [
+                "What is the next number in the sequence: 2, 6, 12, 20, ?",
+                "If a plane crashes on the border of two countries, where do they bury the survivors?",
+                "A farmer has 17 sheep and all but 9 run away. How many sheep does he have left?",
+                // Add 297 more questions here...
+            ];
+
+            function getStoredQuestions() {
+                let seenQuestions = localStorage.getItem("seenQuestions");
+                return seenQuestions ? JSON.parse(seenQuestions) : [];
+            }
+
+            function setStoredQuestions(seenQuestions) {
+                localStorage.setItem("seenQuestions", JSON.stringify(seenQuestions));
+            }
+
+            function getRandomQuestion() {
+                let seenQuestions = getStoredQuestions();
+
+                if (seenQuestions.length >= questions.length) {
+                    seenQuestions = [];
+                }
+                
+                let availableQuestions = questions.filter(q => !seenQuestions.includes(q));
+                let randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+                seenQuestions.push(randomQuestion);
+                setStoredQuestions(seenQuestions);
+                return randomQuestion;
+            }
+
+            document.getElementById("question").textContent = getRandomQuestion();
+            document.getElementById("newQuestion").addEventListener("click", function () {
+                document.getElementById("question").textContent = getRandomQuestion();
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>IQ Booster</h1>
+        <p id="question">Loading question...</p>
+        <button id="newQuestion">New Question</button>
+    </div>
+    
+    <!-- Google AdSense Placeholder -->
+    <div style="margin-top: 20px;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="YOUR-ADSENSE-CLIENT-ID"
+             data-ad-slot="YOUR-AD-SLOT-ID"
+             data-ad-format="auto"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</body>
+</html>
